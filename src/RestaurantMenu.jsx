@@ -1,8 +1,15 @@
 import React from 'react'
 import { useEffect } from 'react'
 import mockMenuData from './utils/mockMenuData'
+import { addItem } from './utils/cartSlice'
+import { useDispatch } from 'react-redux'
 
 const RestaurantMenu = () => {
+
+    const dispatch = useDispatch()
+    const handleClick = ()=>{
+        dispatch(addItem("Pizza"))
+    }
     useEffect(()=>{
         fetchData()
     },[])
@@ -30,7 +37,7 @@ const RestaurantMenu = () => {
 
     const fetchData = async ()=>{
     try {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.653564&lng=88.4450847&restaurantId=169017&catalog_qa=undefined")
+        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.653564&lng=88.4450847&restaurantId=73859&catalog_qa=undefined&submitAction=ENTER")
         
         // Check if response is ok
         if (!data.ok) {
@@ -56,7 +63,9 @@ const RestaurantMenu = () => {
         <h1>Restaurant Menu</h1>
         <h3>Menu</h3>
         <ul>
-            <li>Pizza</li>
+            <li>Pizza
+                <button onClick={handleClick}>add+</button>
+            </li>
             <li>Burger</li>
             <li>Pasta</li>
             <li>Salad</li>

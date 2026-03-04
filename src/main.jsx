@@ -9,6 +9,8 @@ import Cart from "./Cart.jsx";
 import Contact from "./Contact.jsx";
 import RestaurantMenu from "./RestaurantMenu.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {Provider} from "react-redux"
+import appStore from "./utils/appStore.js";
 
 const appRouter = createBrowserRouter([
   {

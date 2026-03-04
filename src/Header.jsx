@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = ()=>{
+    // subscribing to the store using selector 
+    const cartItems = useSelector((store)=>store.cart.items)
     return (
         <div className="header">
             <div className="logo">
@@ -11,7 +14,7 @@ const Header = ()=>{
                 <li><Link to = "/">Home</Link></li>
                 <li><Link to = "/about">About</Link></li>
                 <li><Link to = "/contact">Contact us</Link></li>
-                <li><Link to = "/cart">Cart</Link></li>
+                <li><Link to = "/cart">Cart ({cartItems.length} items)</Link></li>
             </ul>
             </div>
 
